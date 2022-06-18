@@ -1,49 +1,49 @@
 <launch>
-    <param name="/use_sim_time" type="bool" value= "true" />
+    <param name="/use_sim_time" type="bool" value="true" />
 
-    <node pkg="tf2_ros" type="static_transform_publisher" name="base_to_front" args="0.35 0 0 0 0 0.5150381 0.8571673 base_link laser_front"/>
-    <node pkg="tf2_ros" type="static_transform_publisher" name="base_to_rear" args="-0.35 0 0 0 0 0.866 0.5 base_link laser_rear"/>
-    <node pkg="tf2_ros" type="static_transform_publisher" name="footprint_to_base" args="0 0 0 0 0 0 1 base_footprint base_link"/>
-    <node pkg="tf2_ros" type="static_transform_publisher" name="map_to_odom" args="0 0 0 0 0 0 1 map odom"/>
+    <node pkg="tf2_ros" type="static_transform_publisher" name="base_to_front" args="0.35 0 0 0 0 0.5150381 0.8571673 base_link laser_front" />
+    <node pkg="tf2_ros" type="static_transform_publisher" name="base_to_rear" args="-0.35 0 0 0 0 0.866 0.5 base_link laser_rear" />
+    <node pkg="tf2_ros" type="static_transform_publisher" name="footprint_to_base" args="0 0 0 0 0 0 1 base_footprint base_link" />
+    <node pkg="tf2_ros" type="static_transform_publisher" name="map_to_odom" args="0 0 0 0 0 0 1 map odom" />
 
     <node pkg="project2" type="odom_tf" name="odom_tf" output="screen" />
 
     <node pkg="ira_laser_tools" name="laserscan_multi_merger" type="laserscan_multi_merger" output="screen">
-        <param name="destination_frame" value="base_link"/>
-        <param name="scan_destination_topic" value="/merged_scan"/>
-        <param name="laserscan_topics" value ="/front/scan /rear/scan" />
+        <param name="destination_frame" value="base_link" />
+        <param name="scan_destination_topic" value="/merge/scan" />
+        <param name="laserscan_topics" value="/front/scan /rear/scan" />
     </node>
 
-    <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen" args="scan:=merged_scan">
-        <param name="base_frame" value="base_link"/>
-        <param name="odom_frame" value="odom"/>
-        <param name="map_update_interval" value="1.0"/>
-        <param name="maxUrange" value="18.0"/>
-        <param name="maxRange" value="20.0"/>
-        <param name="sigma" value="0.05"/>
-        <param name="kernelSize" value="1"/>
-        <param name="lstep" value="0.05"/>
-        <param name="astep" value="0.05"/>
-        <param name="iterations" value="10"/>
-        <param name="lsigma" value="0.075"/>
-        <param name="ogain" value="3.0"/>
-        <param name="lskip" value="0"/>
-        <param name="minimumScore" value="0"/>
-        <param name="srr" value="0.01"/>
-        <param name="srt" value="0.02"/>
-        <param name="str" value="0.01"/>
-        <param name="stt" value="0.02"/>
-        <param name="linearUpdate" value="0.3"/>
-        <param name="angularUpdate" value="0.03"/>
-        <param name="temporalUpdate" value="-1.0"/>
-        <param name="resampleThreshold" value="0.5"/>
+    <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen" args="scan:=merge/scan">
+        <param name="base_frame" value="base_link" />
+        <param name="odom_frame" value="odom" />
+        <param name="map_update_interval" value="1.0" />
+        <param name="maxUrange" value="18.0" />
+        <param name="maxRange" value="20.0" />
+        <param name="sigma" value="0.05" />
+        <param name="kernelSize" value="1" />
+        <param name="lstep" value="0.05" />
+        <param name="astep" value="0.05" />
+        <param name="iterations" value="10" />
+        <param name="lsigma" value="0.075" />
+        <param name="ogain" value="3.0" />
+        <param name="lskip" value="0" />
+        <param name="minimumScore" value="0" />
+        <param name="srr" value="0.01" />
+        <param name="srt" value="0.02" />
+        <param name="str" value="0.01" />
+        <param name="stt" value="0.02" />
+        <param name="linearUpdate" value="0.3" />
+        <param name="angularUpdate" value="0.03" />
+        <param name="temporalUpdate" value="-1.0" />
+        <param name="resampleThreshold" value="0.5" />
 
-        <param name="particles" value="50"/>
+        <param name="particles" value="50" />
 
-        <param name="xmin" value="-5.0"/>
-        <param name="ymin" value="-5.0"/>
-        <param name="xmax" value="5.0"/>
-        <param name="ymax" value="5.0"/>
+        <param name="xmin" value="-5.0" />
+        <param name="ymin" value="-5.0" />
+        <param name="xmax" value="5.0" />
+        <param name="ymax" value="5.0" />
 
         <!-- <param name="delta" value="0.05"/>
         <param name="llsamplerange" value="0.01"/>

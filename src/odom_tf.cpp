@@ -3,8 +3,8 @@
 #include <nav_msgs/Odometry.h>
 
 #define TOPIC_ROBOT_ODOM "odom"
-#define TF_FRAME_WORLD "odom"
-#define TF_FRAME_ODOM "base_link"
+#define TF_FRAME_PARENT "odom"
+#define TF_FRAME_CHILD "base_link"
 #define QUEUE_SIZE 1000
 
 void robot_odom_callback(tf2_ros::TransformBroadcaster *broadcaster, geometry_msgs::TransformStamped *message, const nav_msgs::OdometryConstPtr &odom);
@@ -18,8 +18,8 @@ int main(int argc, char **argv)
     ros::Subscriber sub_odom;
     tf2_ros::TransformBroadcaster tf_odom_broadcaster;
     geometry_msgs::TransformStamped tf_message_odom;
-    tf_message_odom.header.frame_id = TF_FRAME_WORLD;
-    tf_message_odom.child_frame_id = TF_FRAME_ODOM;
+    tf_message_odom.header.frame_id = TF_FRAME_PARENT;
+    tf_message_odom.child_frame_id = TF_FRAME_CHILD;
 
     sub_odom = n.subscribe<nav_msgs::Odometry>(
         TOPIC_ROBOT_ODOM,

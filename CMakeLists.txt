@@ -5,7 +5,6 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
-  message_generation
   geometry_msgs
   sensor_msgs
   tf2
@@ -13,7 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 ## Generate added messages and services with any dependencies listed here
-generate_messages(DEPENDENCIES std_msgs geometry_msgs sensor_msgs)
+# generate_messages(DEPENDENCIES std_msgs geometry_msgs sensor_msgs)
 
 catkin_package(
  CATKIN_DEPENDS message_runtime
