@@ -7,7 +7,7 @@
     <node pkg="tf2_ros" type="static_transform_publisher" name="map_to_odom" args="0 0 0 0 0 0 1 map odom" />
 
     <!-- broadcast the odometry as tf frame -->
-    <node pkg="project2" type="odom_tf" name="odom_tf" output="screen">
+    <node pkg="project2" type="broadcast_odom_tf" name="broadcast_odom_tf" output="screen">
         <param name="parent_frame" value="odom" />
         <param name="child_frame" value="base_link" />
         <param name="odom_topic" value="odom" />
@@ -56,5 +56,5 @@
         <param name="delta" value="0.05"/>
     </node>
 
-    <node type="rviz" name="rviz" pkg="rviz" args="-d $(find project2)/config/config.rviz" />
+    <node type="rviz" name="rviz" pkg="rviz" args="-d $(find project2)/config/mapping.rviz" />
 </launch>
