@@ -11,9 +11,6 @@ find_package(catkin REQUIRED COMPONENTS
   tf2_ros
 )
 
-## Generate added messages and services with any dependencies listed here
-# generate_messages(DEPENDENCIES std_msgs geometry_msgs sensor_msgs)
-
 catkin_package(
  CATKIN_DEPENDS message_runtime
 )
@@ -21,9 +18,6 @@ catkin_package(
 include_directories(
   include ${catkin_INCLUDE_DIRS}
 )
-  
-add_executable(merge_scans src/merge_scans.cpp)
-target_link_libraries(merge_scans ${catkin_LIBRARIES})
 
-add_executable(odom_tf src/odom_tf.cpp)
-target_link_libraries(odom_tf ${catkin_LIBRARIES})
+add_executable(broadcast_odom_tf src/broadcast_odom_tf.cpp)
+target_link_libraries(broadcast_odom_tf ${catkin_LIBRARIES})
