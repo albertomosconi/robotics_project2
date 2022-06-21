@@ -6,10 +6,10 @@
     <node pkg="tf2_ros" type="static_transform_publisher" name="footprint_to_base" args="0 0 0 0 0 0 1 base_footprint base_link" />
     <node pkg="tf2_ros" type="static_transform_publisher" name="map_to_odom" args="0 0 0 0 0 0 1 map odom" />
 
-    <node name="map_server" pkg="map_server" type="map_server" args="$(find project2)/maps/map2.yaml" output="screen">
+    <node name="map_server" pkg="map_server" type="map_server" args="$(find project2)/maps/map.yaml" output="screen">
         <param name="frame_id" value="map" />
-    </node>    
-    
+    </node>
+
     <!-- merge the two separate laser scans together, publish on topic /merge/scan -->
     <node pkg="ira_laser_tools" name="laserscan_multi_merger" type="laserscan_multi_merger" output="screen">
         <param name="destination_frame" value="base_link" />
@@ -24,15 +24,17 @@
         <param name="odom_topic" value="odom" />
     </node>
 
-    <node pkg="amcl"  name="amcl" type="amcl">
+    <node pkg="project2" type="save_map_trajectory" name="save_map_trajectory" output="screen" />
+
+    <node pkg="amcl" name="amcl" type="amcl">
         <remap from="scan" to="merge/scan" />
         <param name="use_map_topic" value="true" />
         <param name="odom_frame_id" value="odom" />
         <param name="base_frame_id" value="base_link" />
         <param name="global_frame_id" value="map" />
-        <!-- <param name="initial_pose_x" value="0.0" />
+        <param name="initial_pose_x" value="0.0" />
         <param name="initial_pose_y" value="0.0" />
-        <param name="initial_pose_a" value="0.0" /> -->
+        <param name="initial_pose_a" value="0.0" />
         <param name="gui_publish_rate" value="10.0" />
         <param name="odom_model_type" value="omni" />
     </node>

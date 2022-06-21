@@ -1,5 +1,6 @@
 #include <ros/ros.h>
 #include <tf2_ros/transform_broadcaster.h>
+#include <geometry_msgs/TransformStamped.h>
 #include <nav_msgs/Odometry.h>
 
 #define EXE_NAME "broadcast_odom_tf"
