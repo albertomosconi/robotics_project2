@@ -8,6 +8,10 @@ find_package(catkin REQUIRED COMPONENTS
   message_generation
   geometry_msgs
   sensor_msgs
+  grid_map_msgs
+  grid_map_ros
+  grid_map_cv
+  cv_bridge
   tf2
   tf2_ros
 )
@@ -16,7 +20,7 @@ find_package(catkin REQUIRED COMPONENTS
 add_service_files(FILES save_map_trajectory.srv)
 
 ## Generate added messages and services with any dependencies listed here
-generate_messages(DEPENDENCIES std_msgs geometry_msgs sensor_msgs)
+generate_messages(DEPENDENCIES std_msgs geometry_msgs sensor_msgs grid_map_msgs)
 
 catkin_package(
  CATKIN_DEPENDS message_runtime
