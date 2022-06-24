@@ -17,6 +17,8 @@ The second project for the Robotics course at Politecnico di Milano, academic ye
 - **`config/`**
   - `mapping.rviz`: the configuration for visualizing the mapping progress in Rviz.
   - `amcl.rviz`: the configuration for visualizing the robot localization in Rviz.
+- **`images/`**:
+  - `tf-tree.png`: image of the structure of the TF tree.
 - **`launch/`**
   - `mapping.launch`: the launch file for the map creation step, it runs gmapping and other required nodes.
   - `localization.launch`: the launch file for the localization step, it starts amcl and other required nodes.
