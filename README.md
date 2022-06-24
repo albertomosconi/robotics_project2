@@ -19,6 +19,7 @@ The second project for the Robotics course at Politecnico di Milano, academic ye
   - `amcl.rviz`: the configuration for visualizing the robot localization in Rviz.
 - **`images/`**:
   - `tf-tree.png`: image of the structure of the TF tree.
+  - `map.png`: png version of the map obtained by mapping with the second bag.
 - **`launch/`**
   - `mapping.launch`: the launch file for the map creation step, it runs gmapping and other required nodes.
   - `localization.launch`: the launch file for the localization step, it starts amcl and other required nodes.
@@ -70,6 +71,8 @@ roslaunch project2 mapping.launch
 
 and play the second bag.
 
+![map](images/map.png)
+
 ### Localization
 
 bags used: **`first and third bags`**
@@ -91,6 +94,10 @@ rosservice call /save_map_trajectory
 ```
 
 this will save the image in the `maps` folder.
+
+![trajectory with first bag](maps/map_with_trajectory_bag1.png)
+
+![trajectory with third bag](maps/map_with_trajectory_bag3.png)
 
 ## TF Tree
 
