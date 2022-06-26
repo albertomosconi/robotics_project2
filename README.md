@@ -38,6 +38,18 @@ The second project for the Robotics course at Politecnico di Milano, academic ye
 
 The following packages must be installed.
 
+- [**`gmapping`**](https://wiki.ros.org/gmapping/): this package provides laser-based SLAM, used to create a 2-D occupancy grid map from laser and pose data collected by the robot.
+
+  ```
+  sudo apt install ros-melodic-gmapping
+  ```
+
+- [**`amcl`**](https://wiki.ros.org/amcl/): a probabilistic localization system for a robot moving in 2D. It implements the adaptive Monte Carlo localization approach, which uses a particle filter to track the pose of a robot against a known map.
+
+  ```
+  sudo apt install ros-melodic-amcl
+  ```
+
 - [**`OpenCV`**](https://opencv.org/): Open Source Computer Vision Library, used for drawing lines on the map image.
 
   ```
